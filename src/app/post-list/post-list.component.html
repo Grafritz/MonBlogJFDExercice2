@@ -1,0 +1,9 @@
+<!-- votre PostListComponent affichera un PostListItemComponent 
+    pour chaque post dans l'array qu'il a reçu -->
+<app-post-list-item 
+    *ngFor="let item of listAllPost"
+    [title]="item.title" 
+    [content]="item.content" 
+    [loveIts]="item.loveIts" 
+    [createdAt]="item.created_at"
+></app-post-list-item>

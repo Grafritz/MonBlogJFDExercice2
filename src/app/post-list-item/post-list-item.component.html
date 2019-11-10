@@ -1,0 +1,23 @@
+<!-- 
+> Chaque PostListItemComponent affichera le titre, le contenu 
+    et la date de création du post dans le template 
+> Les PostListItemComponent auront des boutons qui permettent d'augmenter 
+    et de diminuer le nombre de loveIts     
+— cette modification aura uniquement un effet sur le component, 
+    et n'a pas besoin d'être remontée au component parent
+--> 
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': loveIts > 0,
+                'list-group-item-danger': loveIts < 0}" > 
+        <span class="pull-right box-tools">
+            <i class="glyphicon glyphicon-calendar"></i>
+            {{ createdAt | date: 'short' }}
+        </span>
+    <h4>{{ title }}</h4>
+    <p>{{ content }} </p>
+    <button class="btn btn-success" (click)="onLoveIt()">
+       <span *ngIf="loveIts>0" >[{{ loveIts }}]</span>  <i class="glyphicon glyphicon-thumbs-up"></i> Love it</button> 
+    &nbsp;
+    <button class="btn btn-danger" (click)="onDontLoveIt()" >
+       <span *ngIf="loveIts<0" >[{{ loveIts }}]</span> <i class="glyphicon glyphicon-thumbs-down"></i> Don't love it</button>    
+</li>
