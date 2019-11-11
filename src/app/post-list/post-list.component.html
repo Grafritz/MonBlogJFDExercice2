@@ -1,9 +1,35 @@
 <!-- votre PostListComponent affichera un PostListItemComponent 
     pour chaque post dans l'array qu'il a reçu -->
-<app-post-list-item 
-    *ngFor="let item of listAllPost"
-    [title]="item.title" 
-    [content]="item.content" 
-    [loveIts]="item.loveIts" 
-    [createdAt]="item.created_at"
-></app-post-list-item>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h2>
+            <a *ngIf="postsList.length > 0" routerLink="/new" class="" style="font-size: 27px;" ><i class="glyphicon glyphicon-plus-sign"></i></a>
+            Posts 
+            <small *ngIf="postsList.length > 0" class="badge"> {{ postsList.length }} </small>
+        </h2>
+        <div *ngIf="postsList.length <= 0" class="alert alert-info alert-dismissable" >
+                <i class="glyphicon glyphicon-info-sign"></i>
+                <b>Alert!</b> Il n'existe pas d'enregistrement sur le serveur. <br />
+                Soyez le premier a creer un poste.<br />
+                <a routerLink="/new" class="btn btn-primary" >Creer le premier post</a>
+        </div>
+        <ul class="list-group">
+                <app-post-list-item 
+                *ngFor="let item of postsList; let i = index"
+                [post]="item"
+                [indexPost]="i"
+            ></app-post-list-item>
+
+            <!--<app-post-list-item 
+                *ngFor="let item of postsList; let i = index"
+                [title]="item.title" 
+                [content]="item.content" 
+                [loveIts]="item.loveIts" 
+                [createdAt]="item.createdAt"
+                [post]="item"
+                [indexPost]="i"
+            ></app-post-list-item>-->
+        </ul>
+    </div>
+</div>
+

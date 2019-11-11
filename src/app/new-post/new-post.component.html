@@ -1,0 +1,27 @@
+<!--
+    créer un nouveau component, NewPostComponent, qui comportera 
+    un formulaire (méthode template ou réactive au choix) 
+    qui permettra à l'utilisateur d'entrer le titre et le contenu d'un nouveau post 
+    — ce nouveau post sera ensuite créé et ajouté au service, 
+    et l'utilisateur sera redirigé vers la liste des posts
+-->
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h2>Nouveau Post</h2>
+        <form [formGroup]="postForm" (ngSubmit)="onSavePost()" >
+            <div class="form-group">
+                <label for="title">Titre:</label>
+                <input type="text" class="form-control" id="title" formControlName="title" placeholder="Entrez le Titre">
+            </div>
+            <div class="form-group">
+                <label for="content">Contenu:</label>
+                <textarea class="form-control" rows="5" id="content" formControlName="content" placeholder="Tapez le contenu ici..."></textarea>
+              </div>
+            <button type="submit" class="btn btn-primary" [disabled]="postForm.invalid">
+                <i class="glyphicon glyphicon-floppy-disk" ></i>  Enregistrer</button>
+            &nbsp;
+            <a routerLink="/posts" class="btn btn-default" >
+                <i class="glyphicon glyphicon-arrow-left" ></i> Annuler</a>
+        </form>
+    </div>
+</div>

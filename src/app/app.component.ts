@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
 
   contentreapeat = 'Enthusiastically grow clicks-and-mortar ROI via fully researched thinking. Dramatically synergize premier results.';
 
-  postsList = [
+  postsList1 = [
     {
       title: 'Jean Fritz D.',
       content: this.contentreapeat,
@@ -42,4 +43,22 @@ export class AppComponent {
       created_at: new Date()
     }
   ];
+
+  constructor() {
+    const firebaseConfig = {
+      apiKey: 'AIzaSyDNDLGdMP8IUvyHNKOhJ0uuq0Kg0mQFi5c',
+      authDomain: 'exoangularbibliotheque.firebaseapp.com',
+      databaseURL: 'https://exoangularbibliotheque.firebaseio.com',
+      projectId: 'exoangularbibliotheque',
+      storageBucket: 'exoangularbibliotheque.appspot.com',
+      messagingSenderId: '929960927415',
+      appId: '1:929960927415:web:56576355378f897b7ead32',
+      measurementId: 'G-Z29PQHD70Z'
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  }
+
+
 }
